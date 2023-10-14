@@ -23,7 +23,8 @@ void Rasterizer::DrawPoint(int x, int y)
 
 void Rasterizer::DrawPoint(const Vertex& v)
 {
-	X::DrawPixel(v.pos.x, v.pos.y, v.color);
+	mColor = v.color;
+	DrawPoint(v.pos.x + 0.5f, v.pos.y + 0.5f);
 }
 
 void Rasterizer::DrawLine(const Vertex& v0, const Vertex& v1)

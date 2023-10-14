@@ -25,6 +25,6 @@ inline static Vertex LerpVertex(const Vertex& a, const Vertex& b, float t)
 {
 	Vertex ret;
 	ret.pos = LerpPos(a.pos, b.pos, t);
-	ret.color = LerpColor(a.color, a.color, t);
+	ret.color = LerpColor(a.color, b.color, t);
 	return ret;
 }
