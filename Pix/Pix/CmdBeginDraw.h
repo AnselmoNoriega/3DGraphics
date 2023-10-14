@@ -6,15 +6,15 @@ class CmdBeginDraw : public Command
 public:
 	const char* GetName() override
 	{
-		return "DrawPixel";
+		return "BeginDraw";
 	}
 
 	const char* GetDescription() override
 	{
 		return
-			"DrawPixel(x, y)\n"
+			"BeginDraw(x, y)\n"
 			"\n"
-			"- Draws a single pixel at position (x, y).";
+			"- Begins the rasterization.";
 	}
 
 	bool Execute(const std::vector<std::string>& params) override;
