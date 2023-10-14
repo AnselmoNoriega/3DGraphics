@@ -155,6 +155,9 @@
     <ClInclude Include="MathHelper.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Editor">

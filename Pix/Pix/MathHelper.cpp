@@ -46,8 +46,23 @@ Vec3 MathHelper::Cross(const Vec3& v, const Vec3& b)
 	return Vec3(
 		v.y * b.z - b.y * v.z,
 		b.x * v.z - v.x * b.z,
-		v.x * b.y - b.x * v.y );
+		v.x * b.y - b.x * v.y);
 
 	//[][][]
 	//[][][] i, -j, k
+}
+
+float MathHelper::Lerp(const float& v, const float& b, float t)
+{
+	return v + (b - v) * t;
+}
+
+Vec2 MathHelper::Lerp(const Vec2& v, const Vec2& b, float t)
+{
+	return { Lerp(v.x, b.x, t), Lerp(v.y, b.y, t) };
+}
+
+Vec3 MathHelper::Lerp(const Vec3& v, const Vec3& b, float t)
+{
+	return { Lerp(v.x, b.x, t), Lerp(v.y, b.y, t), Lerp(v.z, b.z, t) };
 }
