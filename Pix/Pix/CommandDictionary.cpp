@@ -3,6 +3,7 @@
 #include "CmdDrawPixel.h"
 #include "CmdSetResolution.h"
 #include "CmdAddVertex.h"
+#include "CmdSetFillMode.h"
 #include "CmdVarFloat.h"
 #include "CmdEndDraw.h"
 #include "CmdBeginDraw.h"
@@ -29,6 +30,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdDrawPixel>();
 	RegisterCommand<CmdBeginDraw>();
 	RegisterCommand<CmdAddVertex>();
+	RegisterCommand<CmdSetFillMode>();
 	RegisterCommand<CmdEndDraw>();
 }
 

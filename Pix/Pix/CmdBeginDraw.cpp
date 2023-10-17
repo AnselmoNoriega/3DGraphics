@@ -9,6 +9,7 @@ bool CmdBeginDraw::Execute(const std::vector<std::string>& params)
 	}
 
 	Topology topology = Topology::Point;
+
 	if (params[0] == "line")
 	{
 		topology = Topology::Line;

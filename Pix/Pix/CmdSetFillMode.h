@@ -1,21 +1,22 @@
 #pragma once
 #include "Command.h"
 
-class CmdBeginDraw : public Command
+class CmdSetFillMode : public Command
 {
 public:
 	const char* GetName() override
 	{
-		return "BeginDraw";
+		return "SetFillMode";
 	}
 
 	const char* GetDescription() override
 	{
 		return
-			"BeginDraw(shape)\n"
+			"SetFillMode(fillMode)\n"
 			"\n"
-			"- Begins the rasterization.";
+			"- Draws a single pixel at position (x, y).";
 	}
 
 	bool Execute(const std::vector<std::string>& params) override;
 };
+
