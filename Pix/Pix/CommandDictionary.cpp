@@ -4,6 +4,9 @@
 #include "CmdSetResolution.h"
 #include "CmdAddVertex.h"
 #include "CmdSetFillMode.h"
+#include "CmdShowViewPort.h"
+#include "CmdSetClipping.h"
+#include "CmdSetViewPort.h"
 #include "CmdVarFloat.h"
 #include "CmdEndDraw.h"
 #include "CmdBeginDraw.h"
@@ -22,6 +25,9 @@ CommandDictionary::CommandDictionary()
 	// Setting commands
 	RegisterCommand<CmdSetResolution>();
 	RegisterCommand<CmdSetColor>();
+	RegisterCommand<CmdSetViewPort>();
+	RegisterCommand<CmdShowViewPort>();
+	RegisterCommand<CmdSetClipping>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
