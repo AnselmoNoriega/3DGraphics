@@ -29,47 +29,50 @@ void Rasterizer::DrawPoint(const Vertex& v)
 
 void Rasterizer::DrawLine(const Vertex& v0, const Vertex& v1)
 {
-	float dx = v1.pos.x - v0.pos.x;
-	float dy = v1.pos.y - v0.pos.y;
-
-	Vertex startV, endV;
-
-	if (std::abs(dy) < std::abs(dx))
+	if (MathHelper::CheckEqual(v0.pos, v1.pos))
 	{
-		if (v0.pos.x < v1.pos.x)
-		{
-			startV = v0;
-			endV = v1;
-		}
-		else
-		{
-			startV = v1;
-			endV = v0;
-		}
-		for (float x = startV.pos.x; x <= endV.pos.x; ++x)
-		{
-			float t = (x - startV.pos.x) / (endV.pos.x - startV.pos.x);
-			Vertex v = LerpVertex(startV, endV, t);
-			DrawPoint(v);
-		}
+		DrawPoint(v0);
 	}
 	else
 	{
-		if (v0.pos.y < v1.pos.y)
+		float dx = v1.pos.x - v0.pos.x;
+		float dy = v1.pos.y - v0.pos.y;
+
+		Vertex startV, endV;
+
+		if (std::abs(dy) < std::abs(dx))
 		{
-			startV = v0;
-			endV = v1;
+			if (v0.pos.x < v1.pos.x)
+			{
+				startV = v0;
+				endV = v1;
+			}
+			else
+			{
+				startV = v1;
+				endV = v0;
+			}
+			for (float x = std::floor(startV.pos.x); x <= std::floor(endV.pos.x + 0.5f); ++x)
+			{
+				float t = (x - startV.pos.x) / (endV.pos.x - startV.pos.x);
+				Vertex v = LerpVertex(startV, endV, t);
+				DrawPoint(v);
+			}
 		}
 		else
 		{
-			startV = v1;
-			endV = v0;
-		}
-		for (float y = startV.pos.y; y <= endV.pos.y; ++y)
-		{
-			float t = (y - startV.pos.y) / (endV.pos.y - startV.pos.y);
-			Vertex v = LerpVertex(startV, endV, t);
-			DrawPoint(v);
+			//startV = (v0 * (v0.pos.y < v1.pos.y) + v1 * (v0.pos.y >= v1.pos.y));
+			//endV = (v1 * (v0.pos.y < v1.pos.y) + v0 * (v0.pos.y >= v1.pos.y));
+
+			startV = (v0.pos.y < v1.pos.y) ? v0 : v1;
+			endV = (v0.pos.y < v1.pos.y) ? v1 : v0;
+
+			for (float y = startV.pos.y; y <= endV.pos.y; ++y)
+			{
+				float t = (y - startV.pos.y) / (endV.pos.y - startV.pos.y);
+				Vertex v = LerpVertex(startV, endV, t);
+				DrawPoint(v);
+			}
 		}
 	}
 }
@@ -87,13 +90,7 @@ void Rasterizer::DrawTriangle(const Vertex& v0, const Vertex& v1, const Vertex& 
 	break;
 	case FillMode::Solid:
 	{
-		std::vector<Vertex> sortedVertices = { v0, v1, v2 };
-		std::sort(sortedVertices.begin(), sortedVertices.end(),
-			[](const Vertex& lhs, const Vertex& rhs)
-			{
-				return lhs.pos.y < rhs.pos.y;
-			});
-		DrawFilledTriangle(sortedVertices[0], sortedVertices[1], sortedVertices[2]);
+		DrawFilledTriangle(v0, v1, v2);
 	}
 	break;
 	}
@@ -101,4 +98,75 @@ void Rasterizer::DrawTriangle(const Vertex& v0, const Vertex& v1, const Vertex& 
 
 void Rasterizer::DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
 {
+	std::vector<Vertex> sortedVertices = { v0, v1, v2 };
+	std::sort(sortedVertices.begin(), sortedVertices.end(),
+		[](const Vertex& lhs, const Vertex& rhs)
+		{
+			return lhs.pos.y < rhs.pos.y;
+		});
+
+	if (MathHelper::CheckEqual(sortedVertices[0].pos.y, sortedVertices[1].pos.y))
+	{
+		DrawTopFilledTriangle(sortedVertices[0], sortedVertices[1], sortedVertices[2]);
+	}
+	else if (MathHelper::CheckEqual(sortedVertices[1].pos.y, sortedVertices[2].pos.y))
+	{
+		DrawBottomFilledTriangle(sortedVertices[0], sortedVertices[1], sortedVertices[2]);
+	}
+	else
+	{
+		float t = (sortedVertices[1].pos.y - sortedVertices[0].pos.y) / (sortedVertices[2].pos.y - sortedVertices[0].pos.y);
+		Vertex splitVertex = LerpVertex(sortedVertices[0], sortedVertices[2], t);
+
+		DrawBottomFilledTriangle(sortedVertices[0], sortedVertices[1], splitVertex);
+		DrawTopFilledTriangle(sortedVertices[1], splitVertex, sortedVertices[2]);
+	}
+}
+
+void Rasterizer::DrawTopFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
+{
+	Vertex topLeft, topRight;
+	if (v0.pos.x < v1.pos.x)
+	{
+		topLeft = v0;
+		topRight = v1;
+	}
+	else
+	{
+		topLeft = v1;
+		topRight = v0;
+	}
+
+	float dy = v2.pos.y - v0.pos.y;
+	for (float y = v0.pos.y; y <= v2.pos.y; ++y)
+	{
+		float t = (y - v0.pos.y) / dy;
+		Vertex leftVertex = LerpVertex(topLeft, v2, t);
+		Vertex rightVertex = LerpVertex(topRight, v2, t);
+		DrawLine(leftVertex, rightVertex);
+	}
+}
+
+void Rasterizer::DrawBottomFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
+{
+	Vertex bottomLeft, bottomRight;
+	if (v0.pos.x < v1.pos.x)
+	{
+		bottomLeft = v1;
+		bottomRight = v2;
+	}
+	else
+	{
+		bottomLeft = v2;
+		bottomRight = v1;
+	}
+
+	float dy = v2.pos.y - v0.pos.y;
+	for (float y = v0.pos.y; y <= v2.pos.y; ++y)
+	{
+		float t = (y - v0.pos.y) / dy;
+		Vertex leftVertex = LerpVertex(v0, bottomLeft, t);
+		Vertex rightVertex = LerpVertex(v0, bottomRight, t);
+		DrawLine(leftVertex, rightVertex);
+	}
 }
