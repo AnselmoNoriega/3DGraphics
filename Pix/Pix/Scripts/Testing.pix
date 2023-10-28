@@ -6,12 +6,16 @@ SetClipping(true)
 SetViewPort(10, 10, 30, 30)
 ShowViewPort(true)
 
-BeginDraw(line)
+BeginDraw(triangle)
 
 Vertex(5,5, 1, 0, 0)
-Vertex(20,20, 1, 0, 0)
+Vertex(20,20, 0, 1, 0)
+Vertex(25,7, 0, 0, 1)
 
 EndDraw()
+
+
+
 
 
 
