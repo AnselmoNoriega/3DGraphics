@@ -2,6 +2,7 @@
 
 #include "Vector2.h"
 #include "Vector3.h"
+#include "MatrixFour.h"
 
 class MathHelper
 {
@@ -22,4 +23,11 @@ public:
 	static bool CheckEqual(float a, float b);
 	static bool CheckEqual(const Vec2& a, const Vec2& b);
 	static bool CheckEqual(const Vec3& a, const Vec3& b);
+
+	static Vec3 TransformCoord(const Vec3& v, const Matrix4& m);
+	static Vec3 TransformNormal(const Vec3& n, const Matrix4& m);
+	static float Determinant(const Matrix4& m);
+	static float Adjoint(const Matrix4& m);
+	static float Transpose(const Matrix4& m);
+	static float Inverse(const Matrix4& m);
 };

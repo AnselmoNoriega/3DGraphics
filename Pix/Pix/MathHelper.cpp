@@ -1,6 +1,51 @@
 #include "MathHelper.h"
 #include <math.h>
 
+Matrix4 Matrix4::Identity()
+{
+
+}
+
+Matrix4 Matrix4::RotationX(float rad)
+{
+
+}
+
+Matrix4 Matrix4::RotationY(float rad)
+{
+
+}
+
+Matrix4 Matrix4::RotationZ(float rad)
+{
+
+}
+
+Matrix4 Matrix4::Scaling(const Vector3& s)
+{
+
+}
+
+Matrix4 Matrix4::Scaling(float sx, float sy, float sz)
+{
+
+}
+
+Matrix4 Matrix4::Scaling(float s)
+{
+
+}
+
+Matrix4 Matrix4::Translation(const Vector3& d)
+{
+
+}
+
+Matrix4 Matrix4::Translation(float dx, float dy, float dz)
+{
+
+}
+
 float MathHelper::MagnitudSqrd(const Vec2& v)
 {
 	return (v.x * v.x) + (v.y * v.y);
@@ -80,4 +125,34 @@ bool MathHelper::CheckEqual(const Vec2& a, const Vec2& b)
 bool MathHelper::CheckEqual(const Vec3& a, const Vec3& b)
 {
 	return CheckEqual(a.x, b.x) && CheckEqual(a.y, b.y) && CheckEqual(a.z, b.z);
+}
+
+Vec3 MathHelper::TransformCoord(const Vec3& v, const Matrix4& m)
+{
+	return Vec3();
+}
+
+Vec3 MathHelper::TransformNormal(const Vec3& n, const Matrix4& m)
+{
+	return Vec3();
+}
+
+float MathHelper::Determinant(const Matrix4& m)
+{
+	return 0.0f;
+}
+
+float MathHelper::Adjoint(const Matrix4& m)
+{
+	return 0.0f;
+}
+
+float MathHelper::Transpose(const Matrix4& m)
+{
+	return 0.0f;
+}
+
+float MathHelper::Inverse(const Matrix4& m)
+{
+	return 0.0f;
 }

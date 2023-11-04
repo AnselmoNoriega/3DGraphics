@@ -212,6 +212,9 @@
     <ClInclude Include="CmdSetClipping.h">
       <Filter>Commands</Filter>
     </ClInclude>
+    <ClInclude Include="MatrixFour.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Editor">
