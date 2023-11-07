@@ -1,6 +1,6 @@
 #pragma once
 
-struct Vector3;
+struct Vec3;
 
 struct Matrix4
 {
@@ -69,9 +69,9 @@ struct Matrix4
 	static Matrix4 RotationX(float rad);
 	static Matrix4 RotationY(float rad);
 	static Matrix4 RotationZ(float rad);
-	static Matrix4 Scaling(const Vector3& s);
+	static Matrix4 Scaling(const Vec3& s);
 	static Matrix4 Scaling(float sx, float sy, float sz);
 	static Matrix4 Scaling(float s);
-	static Matrix4 Translation(const Vector3& d);
+	static Matrix4 Translation(const Vec3& d);
 	static Matrix4 Translation(float dx, float dy, float dz);
 };
