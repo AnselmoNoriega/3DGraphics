@@ -9,4 +9,5 @@ void Graphics::NewFrame()
 	Viewport::Get()->OnNewFrame();
 	Clipper::Get()->OnNewFrame();
 	Camera::Get()->OnNewFrame();
+	MatrixStack::Get()->OnNewFrame();
 }

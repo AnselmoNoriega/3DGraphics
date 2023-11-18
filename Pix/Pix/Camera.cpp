@@ -14,7 +14,9 @@ void Camera::OnNewFrame()
 {
 	mPosition = { 0.0f,0.0f,0.0f };
 	mDirection = { 0.0f,0.0f,0.0f };
-	mNearplane = 0;
+	mNearplane = 0.1;
+	mFarPlane = 100.0f;
+	mFov = 1.57f;
 }
 
 void Camera::SetPosition(const Vec3& position)
