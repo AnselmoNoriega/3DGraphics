@@ -11,6 +11,8 @@
 #include "CmdPushScaling.h"
 #include "CmdSetCameraDirection.h"
 #include "CmdSetCameraPosition.h"
+#include "CmdEnableDepth.h"
+#include "CmdSetCullMode.h"
 #include "CmdSetCameraFar.h"
 #include "CmdSetCameraNear.h"
 #include "CmdSetCameraFov.h"
@@ -39,6 +41,8 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetViewPort>();
 	RegisterCommand<CmdShowViewPort>();
 	RegisterCommand<CmdSetClipping>();
+	RegisterCommand<CmdEnableDepth>();
+	RegisterCommand<CmdSetCullMode>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();

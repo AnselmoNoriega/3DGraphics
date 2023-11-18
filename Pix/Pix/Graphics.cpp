@@ -3,6 +3,7 @@
 #include "Viewport.h"
 #include "MatrixStack.h"
 #include "PrimitivesManager.h"
+#include "DepthBuffer.h"
 #include "Camera.h"
 
 void Graphics::NewFrame()
@@ -12,4 +13,5 @@ void Graphics::NewFrame()
 	Camera::Get()->OnNewFrame();
 	MatrixStack::Get()->OnNewFrame();
 	PrimitivesManager::Get()->OnNewFrame();
+	DepthBuffer::Get()->OnNewFrame();
 }
