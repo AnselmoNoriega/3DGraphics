@@ -180,6 +180,9 @@
     <ClCompile Include="CmdEnableDepth.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -310,6 +313,12 @@
     </ClInclude>
     <ClInclude Include="CmdEnableDepth.h">
       <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
