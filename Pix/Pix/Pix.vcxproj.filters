@@ -195,6 +195,9 @@
     <ClCompile Include="DirectionalLight.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -342,6 +345,9 @@
       <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="DirectionalLight.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>

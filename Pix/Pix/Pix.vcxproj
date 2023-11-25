@@ -209,6 +209,7 @@
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="MatrixStack.cpp" />
     <ClCompile Include="PixEditor.cpp" />
+    <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="PrimitivesManager.cpp" />
     <ClCompile Include="Rasterizer.cpp" />
     <ClCompile Include="ScriptParser.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="MatrixFour.h" />
     <ClInclude Include="MatrixStack.h" />
     <ClInclude Include="PixEditor.h" />
+    <ClInclude Include="PointLight.h" />
     <ClInclude Include="PrimitivesManager.h" />
     <ClInclude Include="Rasterizer.h" />
     <ClInclude Include="ScriptParser.h" />

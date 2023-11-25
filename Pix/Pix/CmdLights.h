@@ -60,3 +60,18 @@ public:
 
 	bool Execute(const std::vector<std::string>& params);
 };
+
+class CmdSetPointLight : public Command
+{
+public:
+	const char* GetName() override
+	{
+		return "AddPointLight";
+	}
+	const char* GetDescription() override
+	{
+		return "Sets  a Point of light";
+	}
+
+	bool Execute(const std::vector<std::string>& params);
+};
