@@ -1,4 +1,5 @@
 #include "LightManager.h"
+#include "DirectionalLight.h"
 
 LightManager* LightManager::Get()
 {
@@ -13,6 +14,12 @@ void LightManager::OnNewFrame()
 
 void LightManager::AddDirectionalLight(const Vec3& direction)
 {
+	auto light = std::make_unique<DirectionalLight>();
+	light->SetDirection(direction);
+	light->SetAmbient(mAmbient);
+	light->SetDiffuse(mDiffuse);
+	light->SetSpecular(mSpecular);
+	mLights.emplace_back(std::move(light));
 }
 
 void LightManager::AddPointLight(const Vec3& pos, float constant, float linear, float quadratic)

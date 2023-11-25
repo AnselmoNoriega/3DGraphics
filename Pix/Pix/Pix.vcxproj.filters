@@ -192,6 +192,9 @@
     <ClCompile Include="CmdMaterial.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -337,6 +340,9 @@
     </ClInclude>
     <ClInclude Include="CmdMaterial.h">
       <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

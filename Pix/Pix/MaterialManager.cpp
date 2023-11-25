@@ -2,8 +2,8 @@
 
 MaterialManager* MaterialManager::Get()
 {
-	static MaterialManager* sInstance;
-	return sInstance;
+	static MaterialManager sInstance;
+	return &sInstance;
 }
 
 void MaterialManager::OnNewFrame()

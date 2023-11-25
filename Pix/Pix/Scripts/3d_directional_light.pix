@@ -1,9 +1,9 @@
 SetResolution(500, 500, 1)
 
-SetViewport(50, 50, 400, 400)
+SetViewPort(50, 50, 400, 400)
 SetClipping(true)
 SetCullMode(back)
-ShowViewport(true)
+ShowViewPort(true)
 EnableDepth(true)
 
 float $camX = 0, 0.01

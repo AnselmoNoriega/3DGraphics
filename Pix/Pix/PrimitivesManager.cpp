@@ -3,6 +3,7 @@
 #include "Clipper.h"
 #include "MatrixStack.h"
 #include "Camera.h"
+#include "LightManager.h"
 
 extern float gResolutionX;
 extern float gResolutionY;
@@ -22,6 +23,13 @@ namespace
 		);
 	}
 
+	Vec3 GetFacingNormal(const Vec3& a, const Vec3& b, const Vec3& c)
+	{
+		const Vec3 v0 = b - a;
+		const Vec3 v1 = c - a;
+		return MathHelper::Cross(v0, v1);
+	}
+
 	bool DrawTriangle(CullMode mode, const Vec3& a, const Vec3& b, const Vec3& c)
 	{
 		if (mode == CullMode::None)
@@ -29,9 +37,7 @@ namespace
 			return true;
 		}
 
-		const Vec3 v0 = b - a;
-		const Vec3 v1 = c - a;
-		Vec3 facingNormal = MathHelper::Cross(v0, v1);
+		Vec3 facingNormal = GetFacingNormal(a, b, c);
 
 		switch (mode)
 		{
@@ -109,21 +115,38 @@ bool PrimitivesManager::EndDraw()
 		const Matrix4 matView = Camera::Get()->GetViewMatrix();
 		const Matrix4 matProj = Camera::Get()->GetProjectionMatrix();
 		const Matrix4 matScreen = GetScreenTransform();
-		const Matrix4 matNDC = matWorld * matView * matProj;
+		const Matrix4 matNDC = matView * matProj;
 
 		for (size_t i = 2; i < mVertexBuffer.size(); i += 3)
 		{
 			std::vector<Vertex> triangle = { mVertexBuffer[i - 2], mVertexBuffer[i - 1], mVertexBuffer[i] };
 			if (mApplyTransform)
 			{
+				Vec3 facingNormal = GetFacingNormal(triangle[0].pos, triangle[1].pos, triangle[2].pos);
+
+				for (size_t t = 0; t < triangle.size(); ++t)
+				{
+					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matWorld);
+					triangle[t].normal = MathHelper::TransformNormal(facingNormal, matWorld);
+				}
+
+				LightManager* lm = LightManager::Get();
+				for (size_t t = 0; t < triangle.size(); ++t)
+				{
+					Vertex& v = triangle[t];
+					v.color *= lm->ComputeLightColor(v.pos, v.normal);
+				}
+
 				for (size_t t = 0; t < triangle.size(); ++t)
 				{
 					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matNDC);
 				}
+
 				if (!DrawTriangle(mCullMode, triangle[0].pos, triangle[1].pos, triangle[2].pos))
 				{
 					continue;
 				}
+
 				for (size_t t = 0; t < triangle.size(); ++t)
 				{
 					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matScreen);

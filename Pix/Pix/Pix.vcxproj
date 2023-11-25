@@ -202,6 +202,7 @@
     <ClCompile Include="CmdVarFloat.cpp" />
     <ClCompile Include="CommandDictionary.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
+    <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="MaterialManager.cpp" />
@@ -253,6 +254,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandDictionary.h" />
     <ClInclude Include="DepthBuffer.h" />
+    <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="LightManager.h" />
