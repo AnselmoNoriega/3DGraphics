@@ -24,6 +24,7 @@
 #include "CmdEndDraw.h"
 #include "CmdBeginDraw.h"
 #include "CmdSetColor.h"
+#include "CmdLights.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -43,6 +44,9 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetClipping>();
 	RegisterCommand<CmdEnableDepth>();
 	RegisterCommand<CmdSetCullMode>();
+	RegisterCommand<CmdSetLightAmbient>();
+	RegisterCommand<CmdSetLightDiffuse>();
+	RegisterCommand<CmdSetLightSpecular>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
