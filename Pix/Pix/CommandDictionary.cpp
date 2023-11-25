@@ -25,6 +25,7 @@
 #include "CmdBeginDraw.h"
 #include "CmdSetColor.h"
 #include "CmdLights.h"
+#include "CmdMaterial.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -47,6 +48,10 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetLightAmbient>();
 	RegisterCommand<CmdSetLightDiffuse>();
 	RegisterCommand<CmdSetLightSpecular>();
+	RegisterCommand<CmdSetMaterialAmbient>();
+	RegisterCommand<CmdSetMaterialDiffuse>();
+	RegisterCommand<CmdSetMaterialSpecular>();
+	RegisterCommand<CmdSetMaterialShininess>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
