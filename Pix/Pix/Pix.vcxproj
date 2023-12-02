@@ -213,6 +213,7 @@
     <ClCompile Include="PrimitivesManager.cpp" />
     <ClCompile Include="Rasterizer.cpp" />
     <ClCompile Include="ScriptParser.cpp" />
+    <ClCompile Include="SpotLight.cpp" />
     <ClCompile Include="TextEditor.cpp" />
     <ClCompile Include="VariableCache.cpp" />
     <ClCompile Include="Viewport.cpp" />
@@ -268,6 +269,7 @@
     <ClInclude Include="PrimitivesManager.h" />
     <ClInclude Include="Rasterizer.h" />
     <ClInclude Include="ScriptParser.h" />
+    <ClInclude Include="SpotLight.h" />
     <ClInclude Include="TextEditor.h" />
     <ClInclude Include="VariableCache.h" />
     <ClInclude Include="Vector2.h" />

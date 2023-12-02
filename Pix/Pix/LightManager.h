@@ -10,6 +10,7 @@ public:
 
 	void AddDirectionalLight(const Vec3& direction);
 	void AddPointLight(const Vec3& pos, float constant, float linear, float quadratic);
+	void AddSpotLight(const Vec3& pos, const Vec3& direction, float constant, float linear, float quadratic, float angle, float decay);
 
 	void SetLightingAmbient(const X::Color& ambient);
 	void SetLightingDiffuse(const X::Color& diffuse);

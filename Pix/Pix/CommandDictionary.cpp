@@ -54,6 +54,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetMaterialShininess>();
 	RegisterCommand<CmdSetDirectionalLight>();
 	RegisterCommand<CmdSetPointLight>();
+	RegisterCommand<CmdSpotLight>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
