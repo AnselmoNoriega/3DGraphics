@@ -26,7 +26,7 @@ void Camera::SetPosition(const Vec3& position)
 
 void Camera::SetDirection(const Vec3& direction)
 {
-	mDirection = direction;
+	mDirection = MathHelper::Normalize(direction);
 }
 
 void Camera::SetNearPlane(float nearPlane)

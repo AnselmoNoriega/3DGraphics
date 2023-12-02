@@ -213,9 +213,6 @@
     <ClCompile Include="CmdSetShading.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
-    <ClCompile Include="CmdStartShading.cpp">
-      <Filter>Commands</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -381,9 +378,6 @@
       <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="CmdSetShading.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
-    <ClInclude Include="CmdStartShading.h">
       <Filter>Commands</Filter>
     </ClInclude>
   </ItemGroup>

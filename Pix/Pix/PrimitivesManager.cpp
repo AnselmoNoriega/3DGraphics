@@ -135,8 +135,8 @@ bool PrimitivesManager::EndDraw()
 				{
 					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matWorld);
 					triangle[t].normal = MathHelper::TransformNormal(triangle[t].normal, matWorld);
-					triangle[t].worldPos = triangle[i].pos;
-					triangle[t].worldNormal = triangle[i].normal;
+					triangle[t].worldPos = triangle[t].pos;
+					triangle[t].worldNormal = triangle[t].normal;
 				}
 
 				LightManager* lm = LightManager::Get();

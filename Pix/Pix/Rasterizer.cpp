@@ -142,7 +142,6 @@ void Rasterizer::DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Ve
 	{
 		float t = (sortedVertices[1].pos.y - sortedVertices[0].pos.y) / (sortedVertices[2].pos.y - sortedVertices[0].pos.y);
 		Vertex splitVertex = LerpVertex(sortedVertices[0], sortedVertices[2], t, mShadeMode == ShadeMode::Phoh);
-		Vertex splitVertex = LerpVertex(sortedVertices[0], sortedVertices[2], t, mShadeMode == ShadeMode::Phoh);
 
 		DrawBottomFilledTriangle(sortedVertices[0], sortedVertices[1], splitVertex);
 		DrawTopFilledTriangle(sortedVertices[1], splitVertex, sortedVertices[2]);

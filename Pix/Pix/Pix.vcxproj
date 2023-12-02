@@ -201,7 +201,6 @@
     <ClCompile Include="CmdSetShading.cpp" />
     <ClCompile Include="CmdSetViewPort.cpp" />
     <ClCompile Include="CmdShowViewPort.cpp" />
-    <ClCompile Include="CmdStartShading.cpp" />
     <ClCompile Include="CmdVarFloat.cpp" />
     <ClCompile Include="CommandDictionary.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
@@ -259,7 +258,6 @@
     <ClInclude Include="CmdSetShading.h" />
     <ClInclude Include="CmdSetViewPort.h" />
     <ClInclude Include="CmdShowViewPort.h" />
-    <ClInclude Include="CmdStartShading.h" />
     <ClInclude Include="CmdVarFloat.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandDictionary.h" />
