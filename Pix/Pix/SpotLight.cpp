@@ -17,8 +17,8 @@ X::Color SpotLight::ComputeLightColor(const Vec3& pos, const Vec3& normal)
 	{
 		return 0.0f;
 	}
-	float atten = std::pow(dirDot, mDecay);
-	float atten = 1.0f / (mAttenConst + (mAttenLinear * distanceLight) + (mAttenQuadratic * distanceLight * distanceLight));
+	float spot = std::pow(dirDot, mDecay);
+	float atten = spot / (mAttenConst + (mAttenLinear * distanceLight) + (mAttenQuadratic * distanceLight * distanceLight));
 	float attenValue = X::Math::Clamp(atten, 0.0f, 1.0f);
 
 	X::Color colorAmbient = mAmbient * mm->GetMaterialAmbient() * attenValue;

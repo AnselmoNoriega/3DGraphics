@@ -1,5 +1,6 @@
 #include "Clipper.h"
 #include "Viewport.h"
+#include "Rasterizer.h"
 
 const int BIT_INSIDE = 0;
 const int BIT_LEFT   = 1 << 1;
@@ -51,8 +52,8 @@ Vertex ComputeIntersection(ClipEdge edge, const Vertex& v0, const Vertex& v1)
 	case ClipEdge::TOP:     t = (minY - v0.pos.y) / (v1.pos.y - v0.pos.y); break;
 	default: break;
 	}
-
-	return LerpVertex(v0, v1, t);
+	bool isPhong = Rasterizer::Get()->GetShadeMode() == ShadeMode::Phoh;
+	return LerpVertex(v0, v1, t, isPhong);
 }
 
 int GetOutputCode(float x, float y)

@@ -122,19 +122,28 @@ bool PrimitivesManager::EndDraw()
 			std::vector<Vertex> triangle = { mVertexBuffer[i - 2], mVertexBuffer[i - 1], mVertexBuffer[i] };
 			if (mApplyTransform)
 			{
-				Vec3 facingNormal = GetFacingNormal(triangle[0].pos, triangle[1].pos, triangle[2].pos);
+				if (MathHelper::CheckEqual(MathHelper::MagnitudSqrd(triangle[0].normal), 0.0f));
+				{
+					Vec3 facingNormal = GetFacingNormal(triangle[0].pos, triangle[1].pos, triangle[2].pos);
+					for (size_t i = 0; i < triangle.size(); i++)
+					{
+						triangle[i].normal = facingNormal;
+					}
+				}
 
 				for (size_t t = 0; t < triangle.size(); ++t)
 				{
 					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matWorld);
-					triangle[t].normal = MathHelper::TransformNormal(facingNormal, matWorld);
+					triangle[t].normal = MathHelper::TransformNormal(triangle[t].normal, matWorld);
+					triangle[t].worldPos = triangle[i].pos;
+					triangle[t].worldNormal = triangle[i].normal;
 				}
 
 				LightManager* lm = LightManager::Get();
 				for (size_t t = 0; t < triangle.size(); ++t)
 				{
 					Vertex& v = triangle[t];
-					v.color *= lm->ComputeLightColor(v.pos, v.normal);
+					v.color *= lm->ComputeLightColor(v.worldPos, v.worldNormal);
 				}
 
 				for (size_t t = 0; t < triangle.size(); ++t)

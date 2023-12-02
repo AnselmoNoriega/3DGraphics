@@ -6,6 +6,8 @@ struct Vertex
 {
 	Vec3 pos;
 	Vec3 normal;
+	Vec3 worldPos;
+	Vec3 worldNormal;
 	X::Color color;
 
 	Vertex operator*(const bool& b) const
@@ -51,11 +53,16 @@ inline static X::Color LerpColor(const X::Color& a, const X::Color& b, float t)
 			 MathHelper::Lerp(a.a, b.a, t) };
 }
 
-inline static Vertex LerpVertex(const Vertex& a, const Vertex& b, float t)
+inline static Vertex LerpVertex(const Vertex& a, const Vertex& b, float t, bool lerpNormal = false)
 {
 	Vertex ret;
 	ret.pos = LerpPos(a.pos, b.pos, t);
+	ret.worldNormal = LerpPos(a.worldPos, b.worldPos, t);
 	ret.color = LerpColor(a.color, b.color, t);
-	ret.normal = LerpNormal(a.normal, b.normal, t);
+	if (lerpNormal)
+	{
+		ret.normal = LerpNormal(a.normal, b.normal, t);
+		ret.worldNormal = LerpNormal(a.worldNormal, b.worldNormal, t);
+	}
 	return ret;
 }
