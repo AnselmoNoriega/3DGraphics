@@ -80,7 +80,7 @@ void Texture::Load(const std::string& fileName)
             fread(&g, sizeof(uint8_t), 1, file);
             fread(&r, sizeof(uint8_t), 1, file);
             uint32_t index = w + ((mHeight - h - 1) * mWidth);
-            mPixels[index] = (r / 255.0f, g / 255.0f, b / 255.0f, 1.0f);
+            mPixels[index] = { r / 255.0f, g / 255.0f, b / 255.0f, 1.0f };
         }
         fread((char*)paddingBytes.data(), paddingBytes.size(), 1, file);
     }
@@ -97,6 +97,13 @@ X::Color Texture::GetPixel(int x, int y) const
     x = std::clamp(x, 0, mWidth - 1);
     y = std::clamp(y, 0, mHeight - 1);
     return mPixels[x + (y * mWidth)];
+}
+
+X::Color Texture::GetPixel(float u, float v) const
+{
+    int uIndex = static_cast<int>(u * (mWidth - 1) + 0.5f);
+    int vIndex = static_cast<int>(v * (mHeight - 1) + 0.5f);
+    return GetPixel(uIndex, vIndex);
 }
 
 int Texture::GetWidth() const

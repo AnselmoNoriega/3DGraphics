@@ -1,6 +1,7 @@
 #include "Rasterizer.h"
 #include "DepthBuffer.h"
 #include "LightManager.h"
+#include "TextureCache.h"
 
 Rasterizer* Rasterizer::Get()
 {
@@ -37,7 +38,7 @@ void Rasterizer::DrawPoint(const Vertex& v)
 {
 	if (DepthBuffer::Get()->CheckDepthBuffer(v.pos.x + 0.5f, v.pos.y + 0.5f, v.pos.z))
 	{
-		mColor = v.color;
+		mColor = TextureCache::Get()->SampleColor(v.color);
 		if (mShadeMode == ShadeMode::Phoh)
 		{
 			mColor *= LightManager::Get()->ComputeLightColor(v.worldPos, v.worldNormal);

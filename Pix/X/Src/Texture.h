@@ -1,6 +1,3 @@
-#include "..\..\Pix\Texture.h"
-#include "..\..\Pix\Texture.h"
-#include "..\..\Pix\Texture.h"
 //====================================================================================================
 // Filename:	Texture.h
 // Created by:	Peter Chan

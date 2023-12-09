@@ -28,6 +28,8 @@
 #include "CmdMaterial.h"
 #include "CmdModel.h"
 #include "CmdSetShading.h"
+#include "CmdSetTexture.h"
+#include "CmdSetCorrectUV.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -59,6 +61,8 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSpotLight>();
 	RegisterCommand<CmdModel>();
 	RegisterCommand<CmdSetShading>();
+	RegisterCommand<CmdSetTexture>();
+	RegisterCommand<CmdSetCorrectUV>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
