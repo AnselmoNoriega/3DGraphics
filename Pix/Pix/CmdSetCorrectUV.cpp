@@ -1,5 +1,6 @@
 #include "CmdSetCorrectUV.h"
 #include "PrimitivesManager.h"
+#include "VariableCache.h"
 
 bool CmdSetCorrectUV::Execute(const std::vector<std::string>& params)
 {
@@ -8,7 +9,7 @@ bool CmdSetCorrectUV::Execute(const std::vector<std::string>& params)
 		return false;
 	}
 
-	bool correct = params[0] == "true";
+	bool correct = VariableCache::Get()->GetBool(params[0]);
 	PrimitivesManager::Get()->SetCorrectUV(correct);
 	return true;
 }

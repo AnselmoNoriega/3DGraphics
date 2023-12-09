@@ -30,6 +30,7 @@
 #include "CmdSetShading.h"
 #include "CmdSetTexture.h"
 #include "CmdSetCorrectUV.h"
+#include "CmdVarBool.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -66,6 +67,7 @@ CommandDictionary::CommandDictionary()
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
+	RegisterCommand<CmdVarBool>();
 	RegisterCommand<CmdPushTranslation>();
 	RegisterCommand<CmdPushScaling>();
 	RegisterCommand<CmdPushRotationX>();
