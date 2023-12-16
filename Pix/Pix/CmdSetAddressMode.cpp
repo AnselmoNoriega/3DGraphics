@@ -25,6 +25,10 @@ bool CmdSetAddressMode::Execute(const std::vector<std::string>& params)
 	{
 		mode = AddressMode::Wrap;
 	}
+	else
+	{
+		return false;
+	}
 
 	TextureCache::Get()->SetAddressMode(mode);
 }
