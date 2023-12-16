@@ -45,5 +45,5 @@ X::Color TextureCache::SampleColor(const X::Color& uv) const
 
 void TextureCache::SetUseFilter(bool useFilter)
 {
-	mUseFilter;
+	mUseFilter = useFilter;
 }
