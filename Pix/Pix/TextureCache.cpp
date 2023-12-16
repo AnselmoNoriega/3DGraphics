@@ -38,7 +38,7 @@ X::Color TextureCache::SampleColor(const X::Color& uv) const
 	{
 		float u = uv.x / uv.w;
 		float v = uv.y / uv.w;
-		color = mCurrentTexture->GetPixel(u, v, mUseFilter);
+		color = mCurrentTexture->GetPixel(u, v, mUseFilter, mAddressMode);
 	}
 	return color;
 }
@@ -46,4 +46,9 @@ X::Color TextureCache::SampleColor(const X::Color& uv) const
 void TextureCache::SetUseFilter(bool useFilter)
 {
 	mUseFilter = useFilter;
+}
+
+void TextureCache::SetAddressMode(AddressMode addressMode)
+{
+	mAddressMode = addressMode;
 }

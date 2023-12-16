@@ -188,6 +188,7 @@
     <ClCompile Include="CmdPushRotationZ.cpp" />
     <ClCompile Include="CmdPushScaling.cpp" />
     <ClCompile Include="CmdPushTranslation.cpp" />
+    <ClCompile Include="CmdSetAddressMode.cpp" />
     <ClCompile Include="CmdSetCameraDirection.cpp" />
     <ClCompile Include="CmdSetCameraFar.cpp" />
     <ClCompile Include="CmdSetCameraFOV.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="CmdPushRotationZ.h" />
     <ClInclude Include="CmdPushScaling.h" />
     <ClInclude Include="CmdPushTranslation.h" />
+    <ClInclude Include="CmdSetAddressMode.h" />
     <ClInclude Include="CmdSetCameraDirection.h" />
     <ClInclude Include="CmdSetCameraFar.h" />
     <ClInclude Include="CmdSetCameraFOV.h" />

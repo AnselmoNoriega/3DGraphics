@@ -1,6 +1,14 @@
 #pragma once
 #include <XEngine.h>
 
+enum class AddressMode : int
+{
+	Clamp,
+	Wrap,
+	Mirror,
+	Border
+};
+
 class Texture
 {
 public:
@@ -8,7 +16,7 @@ public:
 	const std::string& GetFileName() const;
 
 	X::Color GetPixel(int x, int y) const;
-	X::Color GetPixel(float u, float v, bool filter) const;
+	X::Color GetPixel(float u, float v, bool filter, AddressMode addressMode) const;
 
 	int GetWidth() const;
 	int GetHeight() const;
