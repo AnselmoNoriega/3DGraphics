@@ -10,9 +10,11 @@ public:
 	void SetTexture(const std::string& fileName);
 
 	X::Color SampleColor(const X::Color& uv) const;
+	void SetUseFilter(bool useFilter);
 
 private:
 	std::vector<std::unique_ptr<Texture>> mTextures;
 	const Texture* mCurrentTexture = nullptr;
+	bool mUseFilter;
 };
 

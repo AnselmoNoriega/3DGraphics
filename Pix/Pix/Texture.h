@@ -8,7 +8,7 @@ public:
 	const std::string& GetFileName() const;
 
 	X::Color GetPixel(int x, int y) const;
-	X::Color GetPixel(float u, float v) const;
+	X::Color GetPixel(float u, float v, bool filter) const;
 
 	int GetWidth() const;
 	int GetHeight() const;

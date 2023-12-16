@@ -201,6 +201,7 @@
     <ClCompile Include="CmdSetResolution.cpp" />
     <ClCompile Include="CmdSetShading.cpp" />
     <ClCompile Include="CmdSetTexture.cpp" />
+    <ClCompile Include="CmdSetUseFilter.cpp" />
     <ClCompile Include="CmdSetViewPort.cpp" />
     <ClCompile Include="CmdShowViewPort.cpp" />
     <ClCompile Include="CmdVarBool.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="CmdSetResolution.h" />
     <ClInclude Include="CmdSetShading.h" />
     <ClInclude Include="CmdSetTexture.h" />
+    <ClInclude Include="CmdSetUseFilter.h" />
     <ClInclude Include="CmdSetViewPort.h" />
     <ClInclude Include="CmdShowViewPort.h" />
     <ClInclude Include="CmdVarBool.h" />

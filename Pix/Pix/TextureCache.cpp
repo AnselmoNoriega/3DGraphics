@@ -38,7 +38,12 @@ X::Color TextureCache::SampleColor(const X::Color& uv) const
 	{
 		float u = uv.x / uv.w;
 		float v = uv.y / uv.w;
-		color = mCurrentTexture->GetPixel(u, v);
+		color = mCurrentTexture->GetPixel(u, v, mUseFilter);
 	}
 	return color;
+}
+
+void TextureCache::SetUseFilter(bool useFilter)
+{
+	mUseFilter;
 }

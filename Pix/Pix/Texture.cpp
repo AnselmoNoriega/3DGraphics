@@ -121,8 +121,13 @@ X::Color Texture::GetPixel(int x, int y) const
 	return mPixels[x + (y * mWidth)];
 }
 
-X::Color Texture::GetPixel(float u, float v) const
+X::Color Texture::GetPixel(float u, float v, bool filter) const
 {
+	if (filter)
+	{
+		return GetBilinearFilterPixelColor(*this, u, v);
+	}
+
 	int uIndex = static_cast<int>(u * (mWidth - 1) + 0.5f);
 	int vIndex = static_cast<int>(v * (mHeight - 1) + 0.5f);
 	return GetPixel(uIndex, vIndex);

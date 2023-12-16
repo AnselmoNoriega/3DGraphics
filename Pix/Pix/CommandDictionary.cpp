@@ -31,6 +31,7 @@
 #include "CmdSetTexture.h"
 #include "CmdSetCorrectUV.h"
 #include "CmdVarBool.h"
+#include "CmdSetUseFilter.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -64,6 +65,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetShading>();
 	RegisterCommand<CmdSetTexture>();
 	RegisterCommand<CmdSetCorrectUV>();
+	RegisterCommand<CmdSetUseFilter>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
